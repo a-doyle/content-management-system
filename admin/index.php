@@ -1,32 +1,8 @@
-<?php require_once('init.php'); ?>
+<?php require_once('../../private/init.php'); ?>
+<?php include('../../private/shared/staff_header.php'); ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>GBI: Globe Bank International</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" media="all" href="../css/app.css">
-</head>
+<div id="content">
 
-<body>
+</div>
 
-    <header>
-        <h1>GBI Staff Area</h1>
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="index.php">Menu</a></li>
-        </ul>
-    </nav>
-
-    <div id="content">
-
-    </div>
-
-    <footer>
-        &copy; <?php echo date('Y'); ?> Globe Bank
-    </footer>
-
-</body>
-</html>
+<?php include('../../private/shared/staff_footer.php'); ?>
