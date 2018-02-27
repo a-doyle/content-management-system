@@ -4,7 +4,9 @@
         global $db;
         $sql = "SELECT * FROM subjects ";
         $sql .= "ORDER BY position ASC";
+        // echo $sql;
         $result = mysqli_query($db, $sql);
+        confirm_result_set($result);
         return $result;
     }
 
