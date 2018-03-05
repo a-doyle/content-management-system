@@ -6,7 +6,8 @@
         $page = find_page_by_id($page_id);
         if(!$page) {
             redirect_to(url_for('/index.php'));
-        } 
+        }
+        $subject_id = $page['subject_id'];
     } else {
         // nothing selected; show the homepage
     }
