@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Globe Bank</title>
-    <meta charset="utf-8">
-</head>
+<?php require_once('../private/init.php'); ?>
 
-<body>
+<?php include(SHARED_PATH . '/public_header.php'); ?>
 
-    <h1>Globe Bank: Coming Soon</h1>
-</body>
-</html>
+<div id="main">
+    <div id="page">
+
+    </div>
+</div>
+
+<?php include(SHARED_PATH . '/public_footer.php'); ?>
