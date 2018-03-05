@@ -3,6 +3,7 @@
 <?php include(SHARED_PATH . '/public_header.php'); ?>
 
 <div id="main">
+    <?php include(SHARED_PATH . '/public_nav.php'); ?>
     <div id="page">
 
     </div>
