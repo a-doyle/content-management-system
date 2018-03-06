@@ -1,19 +1,42 @@
 <?php
-    require_once('../../private/init.php');
+  require_once('../../private/init.php');
 
-    $errors = [];
-    $username = '';
-    $password = '';
+  $errors = [];
+  $username = '';
+  $password = '';
 
-    if(is_post_request()) {
-        $username = $_POST['username'] ?? '';
-        $password = $_POST['password'] ?? '';
+  if(is_post_request()) {
+    $username = $_POST['username'] ?? '';
+    $password = $_POST['password'] ?? '';
 
-        $_SESSION['username'] = $username;
-
-        redirect_to(url_for('/admin/index.php'));
+    // validations
+    if(is_blank($username)) {
+      $errors[] = "Username cannot be blank.";
+    }
+    if(is_blank($password)) {
+      $errors[] = "Password cannot be blank.";
     }
 
+    // if there were no errors, try to login
+    if(empty($errors)) {
+      // using one variable ensures that msg is the same
+      $login_failure_msg = "Log in was unsuccessful.";
+      $admin = find_admin_by_username($username);
+      if($admin) {
+        if(password_verify($password, $admin['hashed_password'])) {
+          // password matches
+          log_in_admin($admin);
+          redirect_to(url_for('/admin/index.php'));
+        } else {
+          // username matches, but password does not match
+          $errors[] = $login_failure_msg;
+        }
+      } else {
+        // no username found
+        $errors[] = $login_failure_msg;
+      }
+    }
+  }
 ?>
 
 <?php $page_title = 'Log in'; ?>
