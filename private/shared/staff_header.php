@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>GBI: Globe Bank International - <?php echo $page_title; ?></title>
+    <title>GBI: Globe Bank International - <?php echo h($page_title); ?></title>
     <meta charset="utf-8">
     <link rel="stylesheet" media="all" href="<?php echo url_for('/css/app.css'); ?>">
 </head>
@@ -18,6 +18,8 @@
 
     <nav>
         <ul>
+            <li>User: <?php echo $_SESSION['username'] ?? ''; ?></li>
             <li><a href="<?php echo url_for('/admin/index.php'); ?>">Menu</a></li>
+            <li><a href="<?php echo url_for('/admin/logout.php'); ?>">Logout</a></li>
         </ul>
     </nav>
