@@ -9,6 +9,7 @@
         <ul>
             <li><a href="<?php echo url_for('/admin/subjects/index.php'); ?>">Subjects</a></li>
             <li><a href="<?php echo url_for('/admin/pages/index.php'); ?>">Pages</a></li>
+            <li><a href="<?php echo url_for('/admin/auth_admins/index.php'); ?>">Admins</a></li>
         </ul>
     </div>
 </div>
