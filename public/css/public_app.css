@@ -55,22 +55,22 @@ background: #e03e52;
 color: #FFFFFF;
 }
 
+/* Navigation 
+---------------------*/
 
-/* Navigation */
-
-navigation {
+nav {
 float: left;
 width: 200px;
 height: 100%;
 background: #7a6855;
 }
 
-navigation a {
+nav a {
 color: #FFFFFF;
 text-decoration: none;
 }
 
-navigation a:hover {
+nav a:hover {
 color: #e03e52;
 text-decoration: underline;
 }
@@ -113,7 +113,8 @@ line-height: 1.5em;
 }
 
 
-/* Page Content */
+/* Page Content 
+---------------------*/
 
 #hero-image {
 float: left;
@@ -181,7 +182,8 @@ clear: both;
 padding: 1em;
 }
 
-/* Service blocks on homepage */
+/* Service blocks on homepage 
+---------------------*/
 
 #service-blocks {
 margin-top: 50px;
@@ -193,7 +195,8 @@ width: 250px;
 margin-right: 40px;
 }
 
-/* Learn More links */
+/* Learn More links 
+---------------------*/
 
 a.learnmore {
 color: #E03E52;

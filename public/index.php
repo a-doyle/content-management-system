@@ -4,7 +4,7 @@
     $preview = false;
     if(isset($_GET['preview'])) {
         // previewing should require admin to be logged in
-        $preview = $_GET['preview'] == 'true' ? true : false;
+        $preview = $_GET['preview'] == 'true' && is_logged_in() ? true : false;
     }
     $visible = !$preview;
 
@@ -40,6 +40,7 @@
 <?php include(SHARED_PATH . '/public_header.php'); ?>
 
 <div id="main">
+    <a href="<?php echo url_for('/admin/login.php'); ?>">Login as Admin</a>
     <?php include(SHARED_PATH . '/public_nav.php'); ?>
     <div id="page">
     <?php

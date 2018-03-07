@@ -1,5 +1,6 @@
 <?php
     require_once('../../../private/init.php');
+    require_login();
     $id = $_GET['id'] ?? '1'; // PHP > 7.0
     $admin = find_admin_by_id($id);
 ?>

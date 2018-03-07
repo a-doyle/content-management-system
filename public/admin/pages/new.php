@@ -1,39 +1,37 @@
 <?php
+  require_once('../../../private/init.php');
+  require_login();
 
-require_once('../../../private/init.php');
+  if(is_post_request()) {
+      
+    $page = [];
+    $page['subject_id'] = $_POST['subject_id'] ?? '';    
+    $page['menu_name'] = $_POST['menu_name'] ?? '';
+    $page['position'] = $_POST['position'] ?? '';
+    $page['visible'] = $_POST['visible'] ?? '';
+    $page['content'] = $_POST['content'] ?? '';
 
-if(is_post_request()) {
-    
-  $page = [];
-  $page['subject_id'] = $_POST['subject_id'] ?? '';    
-  $page['menu_name'] = $_POST['menu_name'] ?? '';
-  $page['position'] = $_POST['position'] ?? '';
-  $page['visible'] = $_POST['visible'] ?? '';
-  $page['content'] = $_POST['content'] ?? '';
+    $result = insert_page($page);
+    if($result === true) {
+      $new_id = mysqli_insert_id($db);
+      $_SESSION['message'] = 'The page was created successfully.';
+      redirect_to(url_for('/admin/pages/show.php?id=' . $new_id));
+    } else {
+      $errors = $result;
+    }
 
-  $result = insert_page($page);
-  if($result === true) {
-    $new_id = mysqli_insert_id($db);
-    redirect_to(url_for('/admin/pages/show.php?id=' . $new_id));
   } else {
-    $errors = $result;
+
+    $page = [];
+    $page['subject_id'] = $_GET['subject_id'] ?? '1';    
+    $page['menu_name'] = '';
+    $page['position'] = '';
+    $page['visible'] = '';
+    $page['content'] = '';
+
   }
 
-} else {
-
-  $page = [];
-  $page['subject_id'] = '';    
-  $page['menu_name'] = '';
-  $page['position'] = '';
-  $page['visible'] = '';
-  $page['content'] = '';
-
-}
-
-$page_set = find_all_pages();
-$page_count = mysqli_num_rows($page_set) + 1;
-mysqli_free_result($page_set);
-
+  $page_count = count_pages_by_subject_id($page['subject_id']) + 1;
 ?>
 
 <?php $page_title = 'Create Page'; ?>
@@ -41,7 +39,7 @@ mysqli_free_result($page_set);
 
 <div id="content">
 
-  <a class="back-link" href="<?php echo url_for('/admin/pages/index.php'); ?>">&laquo; Back to List</a>
+  <a class="back-link" href="<?php echo url_for('/admin/subjects/show.php?id=' . h(u($page['subject_id']))); ?>">&laquo; Back to Subject Page</a>
 
   <div class="page new">
     <h1>Create Page</h1>
@@ -99,7 +97,7 @@ mysqli_free_result($page_set);
         <dd><textarea name="content" cols="60" rows="10"><?php echo h($page['content']); ?></textarea></dd>
       </dl>
       <div id="operations">
-        <input type="submit" value="Create Subject">
+        <input type="submit" value="Create Page">
       </div>
     </form>
 

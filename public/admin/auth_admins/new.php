@@ -1,5 +1,6 @@
 <?php
     require_once('../../../private/init.php');
+    require_login();
 
     if(is_post_request()) {
         $subject = [];
@@ -37,14 +38,14 @@
 
 <div id="content">
 
-  <a class="back-link" href="<?php echo url_for('/staff/admins/index.php'); ?>">&laquo; Back to List</a>
+  <a class="back-link" href="<?php echo url_for('/admin/auth_admins/index.php'); ?>">&laquo; Back to List</a>
 
   <div class="admin new">
     <h1>Create Admin</h1>
 
     <?php echo display_errors($errors); ?>
 
-    <form action="<?php echo url_for('/staff/admins/new.php'); ?>" method="post">
+    <form action="<?php echo url_for('/admin/auth_admins/new.php'); ?>" method="post">
       <dl>
         <dt>First name</dt>
         <dd><input type="text" name="first_name" value="<?php echo h($admin['first_name']); ?>"></dd>

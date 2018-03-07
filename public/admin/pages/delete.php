@@ -1,27 +1,26 @@
 <?php
+    require_once('../../../private/init.php');
+    require_login();
 
-require_once('../../../private/init.php');
+    if(!isset($_GET['id'])) {
+        redirect_to(url_for('/admin/pages/index.php'));
+    }
 
-if(!isset($_GET['id'])) {
-    redirect_to(url_for('/admin/pages/index.php'));
-}
-
-$id = $_GET['id'];
-
-if(is_post_request()) {
-    $result = delete_page($id);
-    redirect_to(url_for('/admin/pages/index.php'));
-} else {
+    $id = $_GET['id'];
     $page = find_page_by_id($id);
-}
 
+    if(is_post_request()) {
+        $result = delete_page($id);
+        $_SESSION['message'] = 'The page was deleted successfully.';
+        redirect_to(url_for('/admin/subjects/show.php?id=' . h(u($page['subject_id']))));
+    }
 ?>
 
 <?php $page_title = 'Delete Page'; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
 
 <div id="content">
-    <a class="back-link" href="<?php echo url_for('/admin/pages/index.php'); ?>">&laquo; Back to List</a>
+<a class="back-link" href="<?php echo url_for('/admin/subjects/show.php?id=' . h(u($page['subject_id']))); ?>">&laquo; Back to Subject Page</a>
     <div class="page delete">
     
         <h1>Delete Page</h1>

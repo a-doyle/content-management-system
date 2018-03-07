@@ -23,3 +23,5 @@
             <li><a href="<?php echo url_for('/admin/logout.php'); ?>">Logout</a></li>
         </ul>
     </nav>
+
+    <?php echo display_session_message(); ?>
