@@ -4,8 +4,8 @@
 
 // Credentials
 $dbhost = 'localhost';
-$dbuser = 'doyyyler';
-$dbpass = '@land0Yl3';
+$dbuser = '#';
+$dbpass = '#';
 $dbname = 'globe_bank';
 
 // 1. Create a database connection
